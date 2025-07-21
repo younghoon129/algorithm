@@ -1,0 +1,44 @@
+T = int(input())
+
+for i in range(T):
+    N, M = list(map(int, input().split()))
+    A = []
+    Max_fly = 0
+    plus_fly = 0
+    X_fly = 0
+    for j in range(N):
+        A.append(list(map(int, input().split())))
+    
+    for k in range(N): #열
+        for l in range(N): #행
+            g_total = 0
+            s_total = 0
+            total = 0
+            # for m in range(0,M): 위치에서 각 방향으로 m세기만큼 쏨
+            start_l, end_l = max(l-(M-1), 0), min(l+M, N)
+            start_k, end_k = max(k-(M-1), 0), min(k+M, N)
+    
+            for sr in range(start_l, end_l): # 세로칸 숫자 합
+                s_total +=A[sr][k]
+            for gr in range(start_k, end_k): # 가로칸 숫자 합
+                g_total +=A[l][gr]
+    
+            total = g_total+s_total-A[l][k]
+            plus_fly = max(plus_fly, total)
+            #십자================================================
+    
+            L_total = 0
+            R_total = 0
+            total = 0
+    
+            for m in range(-M+1,M):
+                if 0 <= l+m < N and 0 <= k+m < N: # 배열 넘어가지 않게
+                    L_total += A[l+m][k+m]
+                if 0 <= l-m < N and 0 <= k+m < N: # 배열 넘어가지 않게
+                    R_total += A[l-m][k+m]
+    
+                total = L_total+R_total-A[l][k]
+                X_fly = max(X_fly, total)
+    
+            Max_fly = max(plus_fly, X_fly, Max_fly)
+    print(f"#{i+1} {Max_fly}")
