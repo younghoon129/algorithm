@@ -9,3 +9,7 @@ for t in range(T):
         print()
     else:
         print(f'#{t+1}', B)
+
+
+
+### 10진수, 2진수 변환 방법을 알게됐습니다.

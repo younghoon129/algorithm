@@ -1,0 +1,16 @@
+T = int(input())
+
+for t in range(T):
+    num = list(map(int, input().split()))
+    x = num[0]
+    y = num[1]
+    n = num[2]
+    count = 0
+    while max(x, y) <= n:
+            if x<y:
+                x += y
+                count += 1
+            elif y<x:
+                y += x
+                count += 1
+    print(count)
