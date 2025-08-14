@@ -30,9 +30,30 @@ for tc in range(1, test+1):
                 # print(start_c, start_r)
                 # print(start_r, start_c,next_r[A], "스시스시")
                 cnt += 1
-                
-            # 지금 위치보다 작은게 없으면 프로그램 끝    
     print(f"#{tc} {cnt}")
+# ======================================
+# 건하햄 코드
+
+# mx = start_r
+# my = start_c
+# score = 0
+# while True:
+#     x = mx
+#     y = my
+#     score += 1
+#     min_num = road[x][y]
+#     for ii in range(4):
+#         nx = x + dx[ii]
+#         ny = y + dy[ii]
+#         if 0 <= nx ~~~~
+#         if road[nx][ny] < min_num:
+#             min_num = road[nx][ny]
+#             mx = nx
+#             my = ny
+
+
+            # 지금 위치보다 작은게 없으면 프로그램 끝    
+
 # start_r, start_c = 0, 0
 # now_r = [start_r, start_c]
 # print(now_r)
