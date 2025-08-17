@@ -1,3 +1,4 @@
+# 50분 소요
 round = int(input())
 
 for r in range(round):
