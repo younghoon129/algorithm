@@ -1,6 +1,7 @@
-import sys
-sys.stdin = open("1979_input.txt", "r")
+# import sys
+# sys.stdin = open("1979_input.txt", "r")
 # 8시 20분 시작
+# 8시 50분 끝(패스)
 
 test = int(input())
 
