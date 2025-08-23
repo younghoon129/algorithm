@@ -13,3 +13,4 @@ for t in range(1, 11):  # 10개
         if d_num <= 1:
             break
     print(f"#{t} {d_num}")
+    

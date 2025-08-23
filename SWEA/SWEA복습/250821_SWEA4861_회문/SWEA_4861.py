@@ -1,7 +1,7 @@
 # 1:56 시작
 # + 10
-import sys
-sys.stdin = open("4861_input.txt", "r")
+# import sys
+# sys.stdin = open("4861_input.txt", "r")
 
 # 111111111111
 # test = int(input())
