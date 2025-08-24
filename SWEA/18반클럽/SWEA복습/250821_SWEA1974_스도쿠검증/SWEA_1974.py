@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("1974_input.txt", "r")
+sys.stdin = open("C:\\Users\\user\\Desktop\\코딩폴더 깃허브\\김영훈\\algorithm\\SWEA\\SWEA복습\\250821_SWEA1974_스도쿠검증\\1974_input.txt", "r")
 
 test = int(input())
 for t in range(1, test + 1):

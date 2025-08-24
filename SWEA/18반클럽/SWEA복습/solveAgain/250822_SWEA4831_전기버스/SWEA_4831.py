@@ -1,6 +1,6 @@
 # 17:05 ~ 17 : 50
 import sys
-sys.stdin = open("C:\\Users\\user\\Desktop\\코딩폴더 깃허브\\김영훈\\algorithm\\SWEA\\SWEA복습\\solveAgain\\250822_SWEA4831_전기버스\\sample_input (1).txt", "r")
+sys.stdin = open("C:\\Users\\user\\Desktop\\코딩폴더 깃허브\\김영훈\\algorithm\\SWEA\\SWEA복습\\solveAgain\\250822_SWEA4831_전기버스\\4831_input.txt", "r")
 
 test = int(input())
 for t in range(1, test+1):
