@@ -1,6 +1,6 @@
 test = int(input())
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+dx = [-1, 1, 0, 0,-1, -1, 1, 1]
+dy = [0, 0, -1, 1, -1, 1, 1, -1]
 
 for t in range(1, test+1):
     n, m = map(int, input().split())
@@ -10,7 +10,8 @@ for t in range(1, test+1):
     box[bs-1][bs-1] = 2  # 백
     box[bs][bs-1] = 1  # 흑
     box[bs-1][bs] = 1  # 흑
-
+    white = 0
+    black = 0
     for i in range(m):  # 돌 놓는 횟수
         y, h, rock = map(int, input().split())
         h = h-1
@@ -22,26 +23,42 @@ for t in range(1, test+1):
                 nx = h + dx[j]*k
                 ny = y + dy[j]*k
                 if 0 <= nx < n and 0 <= ny < n:
-                    if box[h][y] == box[nx][ny]:
-                        for r in range(k):
+                    if rock == box[nx][ny]:
+                        for r in range(k-1, 0, -1):
                             
                             rx = h +dx[j]*r
-                            ry = y +dx[j]*r
-                            print(r,'@@@@@@@@@@@')
+                            ry = y +dy[j]*r
                             # print(box[rx][ry], '바뀌기 전', rx, ry)
-                            # box[rx][ry] = rock
+                            box[rx][ry] = rock
                             # print(rx,'rx', ry, 'ry', nx, ny)
                             # print(box[rx][ry], '바뀐 후')
-                            if r + 1 == k:
-                                break
-                    elif box[h][y] != box[nx][ny]:
-                        continue
+                        break
+
                     elif not box[nx][ny]:
                         break
-                print(k,'##############')
+                # print(k,'##############')
     
     # black_st = list(b.count(1) for b in range(box))
     # white_st = list(b.count(2) for b in range(box))
     # for b in box:
-    print(box)
+    for color in box:
+        white += color.count(2)
+        black += color.count(1)
+        # print(color)
+    print(f"#{t} {black} {white}")
+        #    {black} {white}")
     # print(black_st, white_st)
+# 1
+# 4 12
+# 1 2 1
+# 1 1 2
+# 4 3 1
+# 4 4 2
+# 2 1 1
+# 4 2 2
+# 3 4 1
+# 1 3 2
+# 2 4 1
+# 1 4 2
+# 4 1 2
+# 3 1 2
