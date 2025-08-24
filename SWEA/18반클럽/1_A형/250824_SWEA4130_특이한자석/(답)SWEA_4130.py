@@ -1,4 +1,4 @@
-# 이준영30 20 : 15 답 20: 55 끝
+# 이준영30 19 : 47 ~20 : 15 답 20: 55 끝
 from collections import deque
 import sys
 sys.stdin = open('C:\\Users\\user\\Desktop\\git\\algorism\\SWEA\\18반클럽\\1_A형\\250824_SWEA4130_특이한자석\\4130_input.txt', 'r')

@@ -1,4 +1,4 @@
-# 21:14분 답
+# 20 : 56 ~ 21:14분 답 ~ 55분
 from collections import deque
 import sys
 sys.stdin = open('C:\\Users\\user\\Desktop\\git\\algorism\\SWEA\\18반클럽\\1_A형\\250824_SWEA5658_보물상자비밀번호\\5658_input.txt','r')
