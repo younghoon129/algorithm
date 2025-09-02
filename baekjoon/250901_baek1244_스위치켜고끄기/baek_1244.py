@@ -4,27 +4,32 @@ n = int(input())
 box = list(map(int, input().split()))
 s = int(input())
 st = []  # 학생, 전구번호 (-1 해야 됨)
+result = []  # 결과
 for t in range(s):
-    st.append([map(int,input().split())])
+    st.append(list(map(int,input().split())))
 
-for ch in range(s):
-    if st[ch][0] == 1:  # 남학생이라면
-        for i in range(st[ch][1]-1, len(box)-1, st[ch][1]):
+for ch in range(s):  # 학생 수만큼
+    bst = st[ch][0]
+    if bst == 1:  # 남학생이라면
+        bn = st[ch][1] -1
+        
+        for i in range(bn, len(box), bn+1):
             if box[i] == 1:
                 box[i] = 0
             elif box[i] == 0:   
                 box[i] = 1
 
-    elif st[ch][0] == 2:  # 여학생이라면
+    elif bst == 2:  # 여학생이라면
         gn = st[ch][1] - 1
-        for j in range(len(box)-1):
+        for j in range(len(box)):
             if 0 <= gn-j and gn+j < len(box):  # 범위
-
-                if box[gn-j] != box[gn+j]:
-                    if len(box[gn-j+1:gn+j-1]) == 1:
-                        box[gn] =
-
-                elif box[gn-j] == box[gn+j]:
-                    continue
+                if box[gn-j] == box[gn+j]:
+                    if box[gn+j] == 1:
+                        box[gn+j], box[gn-j] = 0, 0
+                    elif box[gn+j] == 0:
+                        box[gn+j], box[gn-j] = 1, 1
+                elif box[gn-j] != box[gn+j]:
+                    break
+print(*box)
 
 
