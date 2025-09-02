@@ -7,16 +7,16 @@ for t in range(1, test+1):
     n = int(input())
     box = [list(map(int, input().split())) for _ in range(n)]
     max_cnt = 0
-    st_num = max(map(max, box))
+    st_num = max(max(i for i in box))
     sdx = []
+    # print(box[0].index(st_num))
+    # for i in range(n):
+    #     sdx.append([i, box[i].index(49)])
     for i in range(n):
         for j in range(n):
             if box[i][j] == st_num:
                 sdx.append([i, j])
-                print(i,j, box[i][j])
-
     "======================================================="
-    print(sdx)
     for sx, sy in sdx:
         cnt = 1
         h, y = sx, sy
@@ -37,7 +37,6 @@ for t in range(1, test+1):
                 h, y = n_idx[ndx]
                 cnt+=1
         max_cnt = max(max_cnt, cnt)
-        # print(cnt)
     print(f"#{t} {max_cnt}")
 
 
