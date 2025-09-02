@@ -12,7 +12,7 @@ for ch in range(s):
         for i in range(st[ch][1]-1, len(box)-1, st[ch][1]):
             if box[i] == 1:
                 box[i] = 0
-            elif box[i] == 0:
+            elif box[i] == 0:   
                 box[i] = 1
 
     elif st[ch][0] == 2:  # 여학생이라면
