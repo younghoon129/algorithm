@@ -30,6 +30,13 @@ for ch in range(s):  # 학생 수만큼
                         box[gn+j], box[gn-j] = 1, 1
                 elif box[gn-j] != box[gn+j]:
                     break
-print(*box)
+
+for i in range(0, (len(box)//20)+1):
+    if box[20*i:(20*i)+20]:
+        result.append(box[20*i:(20*i)+20])
+    else:
+        result.append(box[20*i:])
+for j in range(len(result)):
+    print(*result[j])
 
 
