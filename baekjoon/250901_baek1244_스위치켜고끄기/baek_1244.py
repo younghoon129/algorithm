@@ -16,7 +16,7 @@ for ch in range(s):  # 학생 수만큼
         for i in range(bn, len(box), bn+1):
             if box[i] == 1:
                 box[i] = 0
-            elif box[i] == 0:
+            elif box[i] == 0:   
                 box[i] = 1
 
     elif bst == 2:  # 여학생이라면
