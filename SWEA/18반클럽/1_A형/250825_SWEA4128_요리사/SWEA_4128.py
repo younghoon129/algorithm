@@ -1,7 +1,7 @@
 # 10 43
 import itertools
 import sys
-sys.stdin = open("C:\\Users\\user\\Desktop\\git\\algorism\\SWEA\\18반클럽\\1_A형\\250825_SWEA4128_요리사\\4128_input.txt", "r")
+sys.stdin = open("C:\\Users\\user\\Desktop\\코딩폴더 깃허브\\김영훈\\algorithm\\SWEA\\18반클럽\\1_A형\\250825_SWEA4128_요리사\\4128_input.txt", "r")
 
 test = int(input())
 
@@ -29,4 +29,5 @@ for t in range(1, test+1):
             gap_combo = cal_gap
         else:
             gap_combo = min(gap_combo, cal_gap)
-    print(f"#{t} {gap_combo}")
+    
+    print(f"#{t} {combo_list}")
