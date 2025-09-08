@@ -1,7 +1,7 @@
 # 8:15
 from itertools import combinations as co
 import sys
-sys.stdin = open("4128.txt", "r")
+sys.stdin = open("C:\\Users\\user\\Desktop\\코딩폴더 깃허브\\김영훈\\algorithm\\SWEA\\18반클럽\\1_A형\\SWEA복습\\250825_SWEA4128_요리사\\4128.txt", "r")
 
 test = int(input())
 
