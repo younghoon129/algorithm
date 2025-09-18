@@ -139,7 +139,7 @@ for tc in range(1, T+1):
 #     for node in graph:
 #         for neighbor in graph[node]:
 #             in_degree[neighbor] += 1
-    
+
 
 #     queue = deque()
 #     for i in range(1, v_cnt+1):
