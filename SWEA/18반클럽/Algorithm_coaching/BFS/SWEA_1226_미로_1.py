@@ -2,8 +2,6 @@ from collections import deque
 
 dxy= [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
-
-
 def bfs(arr, x, y):
     global result
     queue = deque()
@@ -15,9 +13,6 @@ def bfs(arr, x, y):
 
         for dx, dy in dxy:
             nx, ny = cx+dx, cy+dy
-
-
-
 
             if arr[nx][ny] == 1:
                 continue
@@ -37,7 +32,6 @@ for t in range(1, 11):
     box = [list(map(int, input().strip())) for _ in range(size)]
     # print(box)
 
-
     for i in range(size):
         for j in range(size):
             # print(i, j)
@@ -47,5 +41,5 @@ for t in range(1, 11):
         for k in range(size):
             if box[i][k] == 2:
                 bfs(box, i ,k)
-    
+
     print(f"#{t} {result}")
