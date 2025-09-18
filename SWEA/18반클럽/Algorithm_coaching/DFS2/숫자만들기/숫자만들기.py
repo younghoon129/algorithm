@@ -1,35 +1,104 @@
-def dfs(a, b, c):  # a : 수식에 사용할 숫자들, b : 연산자들, c : 연산자들의 길이는 필요 없을 지도?
-    result = []  # 조합을 저장할 리스트
+# from collections import deque
+# # deque에 숫자들 넣기
+import sys
+sys.stdin = open('C://Users//SSAFY//Desktop//김영훈//algorithm//SWEA//18반클럽//Algorithm_coaching//DFS2//숫자만들기//MakeNum.txt', 'r')
+def dfs(arr, dep, p, m ,x, d):  # arr : 
+    global max_num, min_num
+    if dep == n:
+        
+        max_num = max(max_num, arr)
+        min_num = min(min_num, arr)
+        return
+    
+    if p > 0:
+        dfs(arr+box[dep], dep+1, p-1, m, x, d)
 
-    if n == 1:
-        return [[i] for i in b]
+    if m > 0:
+        dfs(arr-box[dep], dep+1, p, m-1, x, d)
+    if x > 0:
+        dfs(arr*box[dep], dep+1, p, m, x-1, d)
+    if d > 0:
+        # if arr == 0:
+        #     dfs(0, dep+1, p, m, x, d-1)
+        if arr < 0:
+            dfs(-(-arr//box[dep]), dep+1, p, m, x, d-1)
+        else:
+            dfs(arr//box[dep], dep+1, p, m, x, d-1)
 
-    for i in range(len(b)):
-        elem = b[i]
 
-        for rest in dfs(b[:i] + b[i+1:], n - 1):  # 순열
-            result.append([elem] + rest)
+# def dfs(depth, value, plus, minus, mul, div):
+#     global max_num, min_num, n, box
+#     if depth == n:
+#         max_num = max(max_num, value)
+#         min_num = min(min_num, value)
+#         if max_num == 16:
+#             print(depth, value, plus, minus, mul, div)
+        
+#         return
 
-    return result
-
+#     if plus > 0:
+#         dfs(depth + 1, value + box[depth], plus - 1, minus, mul, div)
+#     if minus > 0:
+#         dfs(depth + 1, value - box[depth], plus, minus - 1, mul, div)
+#     if mul > 0:
+#         dfs(depth + 1, value * box[depth], plus, minus, mul - 1, div)
+#     if div > 0:
+#         if value < 0:
+#             dfs(depth + 1, int(-value / box[depth]), plus, minus, mul, div - 1)
+#         else:
+#             dfs(depth + 1, value // box[depth], plus, minus, mul, div - 1)
 
 test = int(input())
 for t in range(1, test+1):
     n = int(input())  # 숫자의 개수
-    o_list = list(map(int, input().split()))  # 연산자 갯수
-    b_list = list(map(int, input().split()))  # 숫자들
+    p, m, x, d = map(int, input().split())  # 연산자
+    box = list(map(int, input().split()))  # 숫자
+    max_num = float('-inf')
+    min_num = float('inf')
+    c_num = 0
+    dfs(box[0],1,  p, m, x, d)
 
-    box = [[] for _ in range(len(b_list)*2)]  # 숫자들 사이에 빈 리스트 넣기(연산자 위해서)
-    oper = [[] for _ in range(5)]
-    for i in range(4):  # 0,1,2,3
-        for j in range(o_list[i]):  
-            print(i)
-            oper[i+1].append(i+1)
-
-    # print(box)
-dfs(box, oper, len(oper))
+    print(f"#{t} {max_num-min_num}")
 
 
 # 5
 # 2 1 0 1
 # 3 5 3 7 9
+
+# def dfs(depth, value, plus, minus, mul, div):
+#     global max_value, min_value, N, numbers
+#     if depth == N:
+#         max_value = max(max_value, value)
+#         min_value = min(min_value, value)
+#         return
+
+#     if plus > 0:
+#         dfs(depth + 1, value + numbers[depth], plus - 1, minus, mul, div)
+#     if minus > 0:
+#         dfs(depth + 1, value - numbers[depth], plus, minus - 1, mul, div)
+#     if mul > 0:
+#         dfs(depth + 1, value * numbers[depth], plus, minus, mul - 1, div)
+#     if div > 0:
+#         if value < 0:
+#             dfs(depth + 1, int(-value / numbers[depth]), plus, minus, mul, div - 1)
+#         else:
+#             dfs(depth + 1, value // numbers[depth], plus, minus, mul, div - 1)
+
+
+# T = int(input())
+# for t in range(1, T + 1):
+#     N = int(input())
+#     plus, minus, mul, div = map(int, input().split())
+#     numbers = list(map(int, input().split()))
+#     max_value = -1e9
+#     min_value = 1e9
+#     dfs(1, numbers[0], plus, minus, mul, div)
+
+#     print(f"#{t} {max_value - min_value}")
+
+    # -------------gpt
+
+
+
+
+
