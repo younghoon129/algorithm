@@ -1,28 +1,17 @@
 from collections import deque
+import copy
 def turn_mag(x, y):  # x : 자석번호, y : 회전방향, 여기서 회전 해야될 정보만 만들자
-    global magnetic, result
-    if x == nn:
-        return
-    if x < 0:
-        return
-    magnetic[x].rotate(y)
-    print(magnetic[x])
-
-    if magnetic[x][0] == 1:
-        result += mag_point[x]
-        print('더하기')
-
+    global new_mag, result, visited
+    new_mag[x].rotate(y)
+    visited[x] = True
     if 0 <= x-1:  # 왼쪽 자석 있다면
-        print(y, '조건1')
-        if magnetic[x][6] != magnetic[x-1][2]:
-            turn_mag(x-1, -(y))
-            print('1')
+        if not visited[x-1]:
+            if magnetic[x][6] != magnetic[x-1][2]:
+                turn_mag(x-1, -(y))
     if x+1 < m_num:  # 오른쪽 자석 있다면
-        print(y, '조건2')
-        if magnetic[x][2] != magnetic[x+1][6]:
-            turn_mag(x+1, -(y))
-            print('2')
-
+        if not visited[x+1]:
+            if magnetic[x][2] != magnetic[x+1][6]:
+                turn_mag(x+1, -(y))
 tc = int(input())
 for t in range(1, tc+1):
     m_num = 4
@@ -31,10 +20,17 @@ for t in range(1, tc+1):
     result = 0
     mag_point = [1, 2, 4, 8]
     for n in range(nn):
+        visited = [False]*m_num
         x, y = map(int, input().split())
         x -= 1
+        new_mag = copy.deepcopy(magnetic)
         turn_mag(x, y)
-    print(result)
+        magnetic = copy.deepcopy(new_mag)
+
+    for i in range(m_num):
+        if magnetic[i][0] == 1:
+            result+=mag_point[i]
+    print(f"#{t} {result}")
 # 1
 # 2
 # 0 0 1 0 0 1 0 0
