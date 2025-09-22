@@ -6,7 +6,7 @@ def alpha(result, idx):
     if len(success) == len(result):
         cnt += 1
         return
-    if idx == n+1:
+    if idx == n:
         return
 
     for i in range(idx, n):
@@ -22,7 +22,8 @@ tc = int(input())
 for t in range(1, tc+1):
     n = int(input())
     box = [list(map(str, input())) for _ in range(n)]
-    cnt = 0
     result = set([])
+    cnt = 0
+
     alpha(result, 0)
     print(f"#{t} {cnt}")
