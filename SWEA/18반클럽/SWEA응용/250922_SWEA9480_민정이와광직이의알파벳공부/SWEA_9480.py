@@ -10,20 +10,43 @@ def alpha(result, idx):
         return
 
     for i in range(idx, n):
-        for j in range(len(box[i])):
-            result.add(box[i][j])
-        alpha(result, i+1)
-
-        for j in range(len(box[i])):
-            result.discard(box[i][j])
+        result2 = set(box[i])
+        print(result2)
+        alpha(result | result2, i+1)
         alpha(result, i+1)
 
 tc = int(input())
 for t in range(1, tc+1):
     n = int(input())
     box = [list(map(str, input())) for _ in range(n)]
-    result = set([])
+    result = set()
     cnt = 0
 
     alpha(result, 0)
     print(f"#{t} {cnt}")
+
+
+
+
+
+# def alpha(result, idx):
+#     global cnt
+#     if len(result) == 26:
+#         cnt += 1
+#         return
+#     if idx == n:
+#         return
+
+#     for i in range(idx, n):
+#         result2 = set(box[i])
+#         alpha(result | result2, i+1)  # 포함
+#         alpha(result, i+1)           # 미포함
+
+# tc = int(input())
+# for t in range(1, tc+1):
+#     n = int(input())
+#     box = [list(input().strip()) for _ in range(n)]
+#     cnt = 0
+
+#     alpha(set(), 0)
+#     print(f"#{t} {cnt}")
