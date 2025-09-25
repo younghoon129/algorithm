@@ -1,6 +1,7 @@
 success = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ,'i', 'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 
+
 def alpha(result, idx):
     global cnt
     if len(success) == len(result):
@@ -8,12 +9,16 @@ def alpha(result, idx):
         return
     if idx == n:
         return
+    
+
 
     for i in range(idx, n):
         result2 = set(box[i])
-        print(result2)
+        # print(result | result2, 'qjkrjwqklrjkwlqjrkljsaklfsa')
         alpha(result | result2, i+1)
         alpha(result, i+1)
+
+
 
 tc = int(input())
 for t in range(1, tc+1):
