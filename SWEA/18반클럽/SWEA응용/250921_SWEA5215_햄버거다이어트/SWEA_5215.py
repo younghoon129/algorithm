@@ -1,5 +1,6 @@
 def hambuger(idx, s_num, k_num):  # sk : 맛, 칼
     global s_sum_num
+    print()
     if k_num > l:
         return
     s_sum_num = max(s_sum_num, s_num)
@@ -7,8 +8,11 @@ def hambuger(idx, s_num, k_num):  # sk : 맛, 칼
         return
     for i in range(idx, n):
         hambuger(i+1, s_num+sk[i][0], k_num+sk[i][1])
-        # hambuger(i+1, s_num, k_num)
-        
+        print(i+1, s_num+sk[i][0], k_num+sk[i][1])
+
+    # hambuger(idx+1, s_num+sk[idx][0], k_num+sk[idx][1])
+    # hambuger(idx+1, s_num, k_num)
+
 
 tc = int(input())
 for t in range(1, tc+1):

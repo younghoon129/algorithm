@@ -16,7 +16,7 @@ def dijkstra(graph, start):
             if distance < distances[adjacent]:
                 distances[adjacent] = distance
                 heapq.heappush(min_heap, [distance, adjacent])
-    return distances[n]
+    return distances, graph
 
 tc = int(input())
 for t in range(1, tc+1):
@@ -25,6 +25,7 @@ for t in range(1, tc+1):
     graph = defaultdict(dict)
     for i in range(n+1):
         graph[i]
+    print(graph)
     for j in range(m):
         graph[box[j][0]].update({box[j][1] : box[j][2]})
     # print(graph)

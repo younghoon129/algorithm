@@ -12,6 +12,8 @@ def turn_mag(x, y):  # x : 자석번호, y : 회전방향, 여기서 회전 해�
         if not visited[x+1]:
             if magnetic[x][2] != magnetic[x+1][6]:
                 turn_mag(x+1, -(y))
+
+
 tc = int(input())
 for t in range(1, tc+1):
     m_num = 4
@@ -29,7 +31,7 @@ for t in range(1, tc+1):
 
     for i in range(m_num):
         if magnetic[i][0] == 1:
-            result+=mag_point[i]
+            result += mag_point[i]
     print(f"#{t} {result}")
 # 1
 # 2
