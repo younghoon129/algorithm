@@ -1,34 +1,94 @@
 import sys
 sys.stdin = open('SWEA_5177_input.txt', 'r')
 import heapq
+from collections import deque
 
-class MaxHeap:
-    def __init__(self):
-        self.heap = []
-
-    def heappush(self, item):
-        self.heap.append(item)
-        self._siftup(len(self.heap) - 1)
-
-    def _siftup(self, idx):
-        parent = (idx - 1) // 2
-        while idx > 0 and self.heap[idx] > self.heap[parent]:
-            self.heap[idx], self.heap[parent] = self.heap[parent], self.heap[idx]
-            idx = parent
-            parent = (idx - 1) // 2
+# def dfs(num):
+#     global result
+#     if num <= 0:
+#         return
+#     result += h[num]
+#     if num == 2:
+#         return
+#     else:
+#         dfs(num//2)
+#
+# tc = int(input())
+# for t in range(1, tc+1):
+#     n = int(input())
+#     box = list(map(int, input().split()))
+#     h = []
+#     result = 0
+#     for i in range(len(box)):
+#         heapq.heappush(h, box[i])
+#     st = len(h)
+#     result = h[0]
+#     dfs((st-1)//2)
+#     print(f"#{t} {result}")
+#
 
 tc = int(input())
 for t in range(1, tc+1):
     n = int(input())
     box = list(map(int, input().split()))
-    h = [0]
-    heapq.heapify(h)
-
+    h = []
+    result = 0
+    queue = deque()
+    queue.append(n)
     for i in range(len(box)):
         heapq.heappush(h, box[i])
-    # print(h)
+    while queue:
+        x = queue.popleft()
+        if x > 0:
+            x = (x - 1) // 2
+            result += h[x]
+            # print(h[x], '@')
+            queue.append(x)
+    print(f"#{t} {result}")
 
-    result = h[1]
-    print(h)
-    print(h[8], h[8//2], h[(8//2)//2], h[1])
-    # for idx, j in enumerate(h):
+
+# import heapq
+#
+#
+# def dfs(num):
+#     global result
+#
+#     if num < 0:
+#         return
+#     result += h[num]
+#     dfs((num-1)//2)
+#
+#
+# tc = int(input())
+# for t in range(1, tc+1):
+#     n = int(input())
+#     box = list(map(int, input().split()))
+#     h = []
+#     result = 0
+#     for i in range(len(box)):
+#         heapq.heappush(h, box[i])
+#     dfs((n-1)//2)
+#     print(f"#{t} {result}")
+# class MaxHeap:
+#     def __init__(self):
+#         self.heap = []
+#
+#     def heappush(self, item):
+#         self.heap.append(item)
+#         self._siftup(len(self.heap) -1)
+#
+#     def _siftup(self, idx):
+#         parent = (idx - 1) // 2
+#         while idx > 0 and self.heap[idx] < self.heap[parent]:
+#             self.heap[idx], self.heap[parent] = self.heap[idx], self.heap[parent]
+#             idx = parent
+#             parent = (idx - 1) // 2
+
+# tc = int(input())
+# for t in range(1, tc+1):
+#     n = int(input())
+#     box = list(map(int, input().split()))
+#     result = MaxHeap()
+#     for i in box:
+#         result.heappush(i)
+#     print(result.heap)
