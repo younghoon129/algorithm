@@ -33,6 +33,7 @@ def mag(rotate, visited):
 
     if 0 <= x - 1 and not visited[x-1]:  # 왼
         if magnet[x-1][6] != magnet[x-2]:
+            pass
 
 tc = int(input())
 n = 4
