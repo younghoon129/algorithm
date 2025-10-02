@@ -1,7 +1,9 @@
+import sys
+sys.stdin = open('SWEA_2819_input.txt', 'r')
 dxy = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
-
 def dfs(box, re, x, y):
+
     if len(re) > max_len:
         return
 
@@ -17,7 +19,6 @@ for t in range(1, tc + 1):
     n = 4
     max_len = 7
     cnt = 0
-    result = set()
     box = [list(map(int, input())) for _ in range(n)]
 
     for i in range(n):
