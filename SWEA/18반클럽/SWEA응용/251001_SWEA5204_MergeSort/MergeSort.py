@@ -1,8 +1,9 @@
-
+import sys
+sys.stdin = open('MergeSort_input.txt', 'r')
+from collections import deque
 def merge_sort(arr):
     global cnt
     n = len(arr)
-
     if n <= 1:
         return arr
     mid = n // 2
@@ -16,32 +17,70 @@ def merge_sort(arr):
 def merge(left, right):
     global cnt
     result = []
+    left = deque(left)
+    right = deque(right)
     while left and right:
-        if left[-1] > right[-1]:
-            cnt +=1
-        if left[0] < right[0]:
-            result.append(left.pop(0))
+        if left[0] > right[0]:
+            result.append(right.popleft())
         else:
-            result.append(right.pop(0))
+            result.append(left.popleft())
+    if left:
+        # print(result)
+        cnt += 1
     result.extend(left)
     result.extend(right)
-
+    # print(result)
     return result
 
 tc = int(input())
+
 for t in range(1, tc+1):
     n = int(input())
     box = list(map(int, input().split()))
     cnt = 0
     re = merge_sort(box)
-    if cnt != 0:
-        print(f"#{t} {re[n//2]} {cnt//2}")
-    else:
-        print(f"#{t} {re[n//2]} {cnt}")
+    print(f"#{t} {re[n//2]} {cnt}")
 
 #
-# 2
-# 5
-# 2 2 1 1 3
-# 10
-# 7 5 4 1 2 10 3 6 9 8
+# from collections import deque
+#
+# def merge_sort(arr):
+#     global cnt
+#     n = len(arr)
+#     if n <= 1:
+#         return arr
+#     mid = n // 2
+#
+#     left_half = merge_sort(arr[:mid])
+#     right_half = merge_sort(arr[mid:])
+#
+#     return merge(left_half, right_half)
+#
+# def merge(left, right):
+#     global cnt
+#     result = []
+#     left = deque(left)
+#     right = deque(right)
+#
+#     while left and right:
+#         if left[-1] > right[-1]:   # 문제에서 주어진 비교 조건
+#             cnt += 1
+#         if left[0] < right[0]:
+#             result.append(left.popleft())
+#         else:
+#             result.append(right.popleft())
+#
+#     result.extend(left)
+#     result.extend(right)
+#     return result
+#
+# tc = int(input())
+# for t in range(1, tc+1):
+#     n = int(input())
+#     box = list(map(int, input().split()))
+#     cnt = 0
+#     re = merge_sort(box)
+#     if cnt != 0:
+#         print(f"#{t} {re[n//2]} {cnt//2}")
+#     else:
+#         print(f"#{t} {re[n//2]} {cnt}")
