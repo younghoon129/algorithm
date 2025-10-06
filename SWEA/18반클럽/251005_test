@@ -1,0 +1,15 @@
+import deque
+def find_set(x):
+    if x not in p_list[x]:
+        p_list[x].append(find_set(p_list[x]))
+    return p_list[x]
+
+
+def union_set(x, y):
+    px = find_set(x)
+    py = find_set(y)
+    if px != py:
+        p_list[px].append(py)
+
+
+def dfs(p_list, m):
