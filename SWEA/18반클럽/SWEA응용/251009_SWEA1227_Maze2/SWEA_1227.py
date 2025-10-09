@@ -12,11 +12,6 @@ def bfs(st, en, visited, box):
     visited[x][y] = True
     while queue:
         xx, yy = queue.popleft()
-        print(xx, yy)
-        if xx == en[0] and yy == en[1]:
-            cnt = 1
-            break
-        
 
         for dx, dy in dxy:
             nx, ny = dx +xx, dy+yy
@@ -24,9 +19,10 @@ def bfs(st, en, visited, box):
                 if box[nx][ny] == 0 and not visited[nx][ny]:
                     visited[nx][ny] = True
                     queue.append([nx, ny])
-
-
-tc = 1 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                if box[nx][ny] == 3:
+                    cnt = 1
+                    return
+tc = 10
 n = 100
 for t in range(1, tc+1):
     x = int(input())
@@ -44,6 +40,8 @@ for t in range(1, tc+1):
                 en = [i, j]
             if st and en:
                 break
+        if st and en:
+            break
 
-    # bfs(st, en, visited, box)
-    print(cnt, st, en)
+    bfs(st, en, visited, box)
+    print(f"#{t} {cnt}")
