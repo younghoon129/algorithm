@@ -40,10 +40,7 @@ condition_iceberg = 2  # 빙산 문제 조건
 iceberg_cnt = 0  # 빙산 갯수
 
 # 빙산 녹이고 방문처리 초기화 해야됨
-for _ in range(max_num):
-    if iceberg_cnt >= condition_iceberg:
-        print(cnt)
-        break
+while iceberg_cnt < condition_iceberg:
     new_box = [var[:] for var in box]
     melt_iceberg()  # 빙산 녹이는 거
     cnt += 1
@@ -55,7 +52,10 @@ for _ in range(max_num):
             if visited[q][w]: continue
             bfs(q, w, visited)
             iceberg_cnt += 1
+    if not iceberg_cnt: break
+if iceberg_cnt >= condition_iceberg:
+    print(cnt)
 else:
     print(no_iceberg)
 
-pprint(box)
+# pprint(box)
