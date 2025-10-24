@@ -1,68 +1,47 @@
 import sys
-sys.stdin = open('SWEA_2382_input.txt', 'r')
-dxy = ((0, 1), (1, 0), (0, -1), (-1, 0))
-
-# 5 <= n <= 100 셀 크기
-# 5 <= k <= 1000 격리 시간
-# 1 <= m <= 1000 군집 개수
-# 세로, 가로, 미생물 수, 이동 방향 순
-# 세로위치(1), 가로위치(1), 미생물 수(7), 이동방향(상)
-# 1(상), 2(하), 3(좌), 4(우)
-
-def time(board, box):
-    for _ in range(m):  # 변경 횟수
-        for i in range(k):  # 미생물 갯수
-            q = box[i][0]  # 행
-            w = box[i][1]  # 열
-            e = board[box[i][2][1]]  # 방향
-            if e == 1:
-                if board[q - 1][w]:
-                    board[q - 1][w] += board[q][w]  # virus 합침
-                    e = max()
-                board[q - 1][w] = board[q][w]
-                q -= 1
-                board[q][w] = 0
-
-            elif e == 2:
-                board[q + 1][w] = board[q][w]
-                q += 1
-
-            elif e == 3:
-                board[q][w - 1] = board[q][w]
-                w -= 1
-
-            elif e == 4:
-                board[q][w + 1] = board[q][w]
-                w += 1
-            # if  e <= 2:
+# sys.stdin = open('SWEA_2382_input.txt', 'r')
+sys.stdin = open('C:\\Users\\user\\Desktop\\코딩폴더 깃허브\\김영훈\\algorithm\\SWEA\\18반클럽\\SWEA응용\\251021_SWEA2382_미생물격리\\SWEA_2382_input.txt', 'r')
+from collections import defaultdict
+dxy = ((0, 0), (-1, 0), (1, 0), (0, -1), (0, 1))
 
 tc = int(input())
 for t in range(1, tc+1):
     n, m ,k = map(int, input().split())
-    board = [[0] * n for _ in range(n)]
-    box = []
-    virus = []
-    for _ in range(k):
-        h, y, v, s = map(int, input().split()) # 세로, 가로, 미생물, 이동방향
-        box.append([h, y])
-        virus.append([v, s])
-
+    bug_dict = defaultdict(list)
     for i in range(k):
-        board[box[i][0]][box[i][1]] = virus[i]
+        x, y, cnt, d = map(int, input().split())
+        bug_dict[i] = [x, y, cnt, d]
+    
+    dxy_change = [0, 2, 1, 4, 3]
 
-    time(board, box)
-    # print(box)
-
-
-
-
-# tc = int(input())
-# for t in range(1, tc+1):
-#     n, m ,k = map(int, input().split())
-#     box = [[0] * n for _ in range(n)]
-#     virus = 0
-#     for _ in range(k):
-#         h, y, v, s = map(int, input().split())
-#         box[h][y] = [v, s]
-#     for _ in range(m):
-#         time(box)
+    while m:
+        for idx, val in bug_dict.items():
+            x, y, cnt, d = val
+            nx = x + dxy[d][0]
+            ny = y + dxy[d][1]
+            val[0] = nx
+            val[1] = ny
+            if not(0 < nx < n-1 and 0 < ny < n - 1):
+                val[3] = dxy_change[d]
+                val[2] = cnt // 2
+        visited = defaultdict(list)
+        for idx, val in bug_dict.items():
+            x, y = val[0], val[1]
+            visited[(x, y)].append(idx)
+        for idx, val in visited.items():
+            if len(val) >= 2:
+                king_pos = 0
+                max_cnt = 0
+                for i in val:
+                    if max_cnt < bug_dict[i][2]:
+                        king_pos = i
+                        max_cnt = bug_dict[i][2]
+                for i in val:
+                    if i != king_pos:
+                        bug_dict[king_pos][2] += bug_dict[i][2]
+                        del bug_dict[i]
+        m -= 1
+    ans = 0
+    for idx, val in bug_dict.items():
+        ans += val[2]
+    print(f"#{t} {ans}")
